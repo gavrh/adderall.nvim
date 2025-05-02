@@ -14,5 +14,5 @@ use 'gavrh/adderall.nvim'
 [vim-plug](https://github.com/junegunn/vim-plug)
 
 ```vim
-Plug 'angelic/adderall.nvim'
+Plug 'gavrh/adderall.nvim'
 ```
