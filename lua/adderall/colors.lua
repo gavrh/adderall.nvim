@@ -2,7 +2,6 @@ local M = {}
 
 M.default = {
     -- basic
-    -- bg = "#191c25",
     bg = "#ffffff",
     fg = "#4b4e57",
     -- normal
