@@ -33,7 +33,7 @@ local set_groups = function()
         NormalNC = { fg = c.fg, bg = cfg.transparent and c.none or c.bg }, -- normal text in non-current windows
         SignColumn = { fg = c.fg, bg = cfg.transparent and c.none or c.bg }, -- column where signs are displayed
         EndOfBuffer = { fg = c.gray02 }, -- ~ lines at the end of a buffer
-        NormalFloat = { fg = c.fg, bg = c.white }, -- normal text and background color for floating windows
+        NormalFloat = { fg = c.fg, bg = c.bg_darker }, -- normal text and background color for floating windows
         FloatBorder = { fg = c.blue, bg = c.gray02 },
         ColorColumn = { fg = c.none, bg = c.gray01 }, --  used for the columns set with 'colorcolumn'
         Conceal = { fg = c.gray05 }, -- placeholder characters substituted for concealed text (see 'conceallevel')
@@ -49,15 +49,15 @@ local set_groups = function()
         FoldColumn = { fg = c.blue },
         IncSearch = { style = "reverse" },
         LineNr = { fg = c.gray06 },
-        CursorLineNr = { fg = c.gray05 },
+        CursorLineNr = { fg = c.gray04 },
         MatchParen = { fg = c.bright_cyan, style = "bold" },
         ModeMsg = { fg = c.cyan, style = "bold" },
         MoreMsg = { fg = c.cyan, style = "bold" },
         NonText = { fg = c.gray03 },
-        Pmenu = { fg = c.fg, bg = c.white },
+        Pmenu = { fg = c.fg, bg = c.bg_darker },
         PmenuSel = { fg = c.bg, bg = c.cyan },
-        PmenuSbar = { fg = c.fg, bg = c.gray02 },
-        PmenuThumb = { fg = c.fg, bg = c.gray02 },
+        PmenuSbar = { fg = c.fg, bg = c.gray07 },
+        PmenuThumb = { fg = c.fg, bg = c.gray07 },
         Question = { fg = c.green, style = "bold" },
         QuickFixLine = { fg = c.blue, bg = c.gray01, style = "bold,italic" },
         qfLineNr = { fg = c.blue, bg = c.gray01 },
@@ -67,10 +67,10 @@ local set_groups = function()
         SpellCap = { fg = c.blue, bg = c.none, style = "italic,undercurl" },
         SpellLocal = { fg = c.cyan, bg = c.none, style = "italic,undercurl" },
         SpellRare = { fg = c.cyan, bg = c.none, style = "italic,undercurl" },
-        StatusLine = { fg = c.black, bg = c.white },
-        StatusLineNC = { fg = c.black, bg = c.white },
-        StatusLineTerm = { fg = c.black, bg = c.white },
-        StatusLineTermNC = { fg = c.black, bg = c.white },
+        StatusLine = { fg = c.fg, bg = c.bg_darker },
+        StatusLineNC = { fg = c.fg, bg = c.bg_darker },
+        StatusLineTerm = { fg = c.fg, bg = c.bg_darker },
+        StatusLineTermNC = { fg = c.fg, bg = c.bg_darker },
         TabLineFill = { fg = c.gray05, bg = c.gray01 },
         TablineSel = { fg = c.bg, bg = c.blue },
         Tabline = { fg = c.gray05 },
@@ -80,7 +80,7 @@ local set_groups = function()
         WarningMsg = { fg = c.yellow, style = "bold" },
         WildMenu = { fg = c.bg, bg = c.blue, style = "bold" },
         CursorColumn = { fg = c.none, bg = c.gray01 },
-        CursorLine = { fg = c.none, bg = c.white },
+        CursorLine = { fg = c.none, bg = c.bg_darker },
         ToolbarLine = { fg = c.fg, bg = c.gray01 },
         ToolbarButton = { fg = c.fg, bg = c.none, style = "bold" },
         NormalMode = { fg = c.cyan, bg = c.none, style = "reverse" },
@@ -95,19 +95,19 @@ local set_groups = function()
         --common
         Type = { fg = c.cyan }, -- int, long, char, etc.
         StorageClass = { fg = c.cyan }, -- static, register, volatile, etc.
-        Structure = { fg = c.pink }, -- struct, union, enum, etc.
-        Constant = { fg = c.pink }, -- any constant
+        Structure = { fg = c.fg }, -- struct, union, enum, etc.
+        Constant = { fg = c.fg }, -- any constant
         Comment = { fg = c.gray06, bg = c.none, style = cfg.comment_style }, -- italic comments
         Conditional = { fg = c.blue, bg = c.none, style = cfg.keyword_style }, -- italic if, then, else, endif, switch, etc.
         Keyword = { fg = c.blue, bg = c.none, style = cfg.keyword_style }, -- italic for, do, while, etc.
         Repeat = { fg = c.blue, bg = c.none, style = cfg.keyword_style }, -- italic any other keyword
-        Boolean = { fg = c.pink, bg = c.none, style = cfg.boolean_style }, -- true , false
+        Boolean = { fg = c.fg, bg = c.none, style = cfg.boolean_style }, -- true , false
         Function = { fg = c.blue, bg = c.none, style = cfg.function_style },
         Identifier = { fg = c.blue, bg = c.none }, -- any variable name
         String = { fg = c.cyan, bg = c.none }, -- Any string
-        Character = { fg = c.pink }, -- any character constant: 'c', '\n'
-        Number = { fg = c.pink }, -- a number constant: 5
-        Float = { fg = c.pink }, -- a floating point constant: 2.3e10
+        Character = { fg = c.fg }, -- any character constant:  'c', '\n'
+        Number = { fg = c.fg }, -- a number constant: 5
+        Float = { fg = c.fg }, -- a floating point constant: 2.3e10
         Statement = { fg = c.blue }, -- any statement
         Label = { fg = c.cyan }, -- case, default, etc.
         Operator = { fg = c.gray06 }, -- sizeof", "+", "*", etc.
@@ -119,7 +119,7 @@ local set_groups = function()
         Typedef = { fg = c.cyan }, -- A typedef
         PreCondit = { fg = c.cyan }, -- preprocessor #if, #else, #endif, etc.
         Special = { fg = c.blue, bg = c.none, "italic" }, -- any special symbol
-        SpecialChar = { fg = c.pink }, -- special character in a constant
+        SpecialChar = { fg = c.fg }, -- special character in a constant
         Tag = { fg = c.red }, -- you can use CTRL-] on this
         Delimiter = { fg = c.gray06 }, -- character that needs attention like , or .
         SpecialComment = { fg = c.blue }, -- special things inside a comment
@@ -130,7 +130,7 @@ local set_groups = function()
         Todo = { fg = c.cyan, bg = c.none, style = "bold,italic" }, -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
         -- HTML
         htmlArg = { fg = c.bright_blue, style = "italic" },
-        htmlBold = { fg = c.pink, bg = c.none, style = "bold" },
+        htmlBold = { fg = c.fg, bg = c.none, style = "bold" },
         htmlEndTag = { fg = c.fg },
         htmlstyle = { fg = c.cyan, bg = c.none, style = "italic" },
         htmlLink = { fg = c.cyan, style = "underline" },
@@ -166,66 +166,66 @@ local set_groups = function()
         markdownBlockquote = { fg = c.gray06 },
         markdownBold = { fg = c.red, bg = c.none, style = "bold" },
         markdownItalic = { fg = c.red, bg = c.none, style = "italic" },
-        markdownCode = { fg = c.pink },
-        markdownCodeBlock = { fg = c.pink },
+        markdownCode = { fg = c.fg },
+        markdownCodeBlock = { fg = c.fg },
         markdownCodeDelimiter = { fg = c.gray06 },
         -- Dashboard
         DashboardShortCut = { fg = c.red },
-        DashboardHeader = { fg = c.pink },
+        DashboardHeader = { fg = c.fg },
         DashboardCenter = { fg = c.blue },
         DashboardFooter = { fg = c.green, style = "italic" },
-        -- TreeSitter highlight groups
+        -- TreeSitter highlight groups (OLD naming for backwards compatibility)
         TSAnnotation = { fg = c.green }, -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
-        TSAttribute = { fg = c.pink }, -- (unstable) TODO: docs
-        TSBoolean = { fg = c.pink, bg = c.none, style = cfg.boolean_style }, -- true or false
-        TSCharacter = { fg = c.pink }, -- For characters.
+        TSAttribute = { fg = c.fg }, -- (unstable) TODO: docs
+        TSBoolean = { fg = c.fg, bg = c.none, style = cfg.boolean_style }, -- true or false
+        TSCharacter = { fg = c.fg }, -- For characters.
         TSComment = { fg = c.gray06, bg = c.none, style = cfg.comment_style }, -- For comment blocks.
-        TSConditional = { fg = c.pink, style = cfg.keyword_style }, -- For keywords related to conditionnals.
+        TSConditional = { fg = c.fg, style = cfg.keyword_style }, -- For keywords related to conditionnals.
         TSConstant = { fg = c.fg }, -- For constants
-        TSConstBuiltin = { fg = c.pink, style = "italic" }, -- For constants that are built in the language: `nil` in Lua.
-        TSConstMacro = { fg = c.cyan }, -- For constants that are defined by macros: `NULL` in C.
-        TSConstructor = { fg = c.gray07 }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
+        TSConstBuiltin = { fg = c.fg, style = "italic" }, -- For constants that are built in the language:  `nil` in Lua.
+        TSConstMacro = { fg = c.cyan }, -- For constants that are defined by macros:  `NULL` in C.
+        TSConstructor = { fg = c.gray07 }, -- For constructor calls and definitions:  `= { }` in Lua, and Java constructors.
         TSError = { fg = c.red }, -- For syntax/parser errors.
         TSException = { fg = c.blue }, -- For exception related keywords.
         TSField = { fg = c.blue }, -- For fields.
-        TSFloat = { fg = c.pink }, -- For floats.
+        TSFloat = { fg = c.fg }, -- For floats.
         TSFunction = { fg = c.bright_blue, style = cfg.function_style }, -- For fuction (calls and definitions).
         TSFuncBuiltin = { fg = c.bright_blue, style = cfg.function_style }, -- For builtin functions: `table.insert` in Lua.
         TSFuncMacro = { fg = c.blue }, -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
-        TSInclude = { fg = c.blue, style = "italic" }, -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
+        TSInclude = { fg = c.blue, style = "italic" }, -- For includes:  `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
         TSKeyword = { fg = c.blue, style = cfg.keyword_style }, -- For keywords that don't fall in previous categories.
         TSKeywordFunction = { fg = c.blue, style = cfg.function_style }, -- For keywords used to define a fuction.
-        TSKeywordOperator = { fg = c.gray06 }, -- For operators that are English words, e.g. `and`, `as`, `or`.
+        TSKeywordOperator = { fg = c.gray06 }, -- For operators that are English words, e.g.`and`, `as`, `or`.
         TSKeywordReturn = { fg = c.blue, style = cfg.keyword_style }, -- For the `return` and `yield` keywords.
-        TSLabel = { fg = c.cyan }, -- For labels: `label:` in C and `:label:` in Lua.
+        TSLabel = { fg = c.cyan }, -- For labels:  `label:` in C and `:label: ` in Lua.
         TSMethod = { fg = c.bright_blue, style = cfg.function_style }, -- For method calls and definitions.
         TSNamespace = { fg = c.blue }, -- For identifiers referring to modules and namespaces.
         -- TSNone = {}, -- No highlighting. Don't change the values of this highlight group.
-        TSNumber = { fg = c.pink }, -- For all numbers
-        TSOperator = { fg = c.gray06 }, -- For any operator: `+`, but also `->` and `*` in C.
+        TSNumber = { fg = c.fg }, -- For all numbers
+        TSOperator = { fg = c.gray06 }, -- For any operator:  `+`, but also `->` and `*` in C.
         TSParameter = { fg = c.fg }, -- For parameters of a function.
         TSParameterReference = { fg = c.fg }, -- For references to parameters of a function.
         TSProperty = { fg = c.blue }, -- Same as `TSField`.
-        TSPunctDelimiter = { fg = c.gray06 }, -- For delimiters ie: `.`
+        TSPunctDelimiter = { fg = c.gray06 }, -- For delimiters ie:  `.`
         TSPunctBracket = { fg = c.gray06 }, -- For brackets and parens.
-        TSPunctSpecial = { fg = c.pink }, -- For special punctutation that does not fall in the catagories before.
+        TSPunctSpecial = { fg = c.fg }, -- For special punctutation that does not fall in the catagories before.
         TSRepeat = { fg = c.blue, style = cfg.keyword_style }, -- For keywords related to loops.
         TSString = { fg = c.cyan }, -- For strings.
         TSStringRegex = { fg = c.blue }, -- For regexes.
-        TSStringEscape = { fg = c.pink }, -- For escape characters within a string.
-        TSStringSpecial = { fg = c.pink }, -- For strings with special meaning that don't fit into the above categories.
-        TSSymbol = { fg = c.pink }, -- For identifiers referring to symbols or atoms.
+        TSStringEscape = { fg = c.fg }, -- For escape characters within a string.
+        TSStringSpecial = { fg = c.fg }, -- For strings with special meaning that don't fit into the above categories.
+        TSSymbol = { fg = c.fg }, -- For identifiers referring to symbols or atoms.
         TSTag = { fg = c.blue }, -- Tags like html tag names.
         TSTagAttribute = { fg = c.bright_blue, style = "italic" }, -- For html tag attributes.
         TSTagDelimiter = { fg = c.gray06 }, -- Tag delimiter like `<` `>` `/`
-        TSText = { fg = c.pink }, -- For strings considered text in a markup language.
-        TSStrong = { fg = c.pink, style = "bold" }, -- For text to be represented in bold.
-        TSEmphasis = { fg = c.pink, style = "bold,italic" }, -- For text to be represented with emphasis.
+        TSText = { fg = c.fg }, -- For strings considered text in a markup language.
+        TSStrong = { fg = c.fg, style = "bold" }, -- For text to be represented in bold.
+        TSEmphasis = { fg = c.fg, style = "bold,italic" }, -- For text to be represented with emphasis.
         TSUnderline = { fg = c.fg, bg = c.none, style = "underline" }, -- For text to be represented with an underline.
         TSStrike = {}, -- For strikethrough text.
         TSTitle = { fg = c.fg, bg = c.none, style = "bold" }, -- Text that is part of a title.
         TSLiteral = { fg = c.fg }, -- Literal text.
-        TSURI = { fg = c.pink }, -- Any URL like a link or email.
+        TSURI = { fg = c.fg }, -- Any URL like a link or email.
         TSMath = { fg = c.blue }, -- For LaTeX-like math environments.
         TSTextReference = { fg = c.red }, -- For footnotes, text references, citations.
         TSEnvironment = { fg = c.blue }, -- For text environments of markup languages.
@@ -233,10 +233,72 @@ local set_groups = function()
         TSNote = { fg = c.blue, style = "italic" }, -- Text representation of an informational note.
         TSWarning = { fg = c.yellow, style = "italic" }, -- Text representation of a warning note.
         TSDanger = { fg = c.red, style = "italic" }, -- Text representation of a danger note.
-        TSType = { fg = c.pink }, -- For types.
+        TSType = { fg = c.fg }, -- For types.
         TSTypeBuiltin = { fg = c.cyan }, -- For builtin types.
         TSVariable = { fg = c.fg, style = cfg.variable_style }, -- Any variable name that does not have another highlight.
-        TSVariableBuiltin = { fg = c.pink, style = cfg.variable_style }, -- Variable names that are defined by the languages, like `this` or `self`.
+        TSVariableBuiltin = { fg = c.fg, style = cfg.variable_style }, -- Variable names that are defined by the languages, like `this` or `self`.
+        
+        -- TreeSitter highlight groups (NEW @ naming for Neovim 0.8+)
+        ["@variable"] = { fg = c.fg, style = cfg.variable_style }, -- Any variable name that does not have another highlight.
+        ["@variable.builtin"] = { fg = c.fg, style = cfg.variable_style }, -- Variable names that are defined by the languages, like `this` or `self`.
+        ["@variable.parameter"] = { fg = c.fg }, -- For parameters of a function.
+        ["@variable.member"] = { fg = c.blue }, -- For fields/properties.
+        ["@constant"] = { fg = c.fg }, -- For constants
+        -- ["@constant.builtin"] = { fg = c.fg, style = "italic" }, -- For constants that are built in the language:  `nil` in Lua.
+        -- ["@constant.macro"] = { fg = c.cyan }, -- For constants that are defined by macros: `NULL` in C.
+        -- ["@module"] = { fg = c.blue }, -- For identifiers referring to modules and namespaces.
+        -- ["@label"] = { fg = c.cyan }, -- For labels: `label:` in C and `:label:` in Lua.
+        -- ["@string"] = { fg = c.cyan }, -- For strings.
+        -- ["@string.regex"] = { fg = c.blue }, -- For regexes.
+        -- ["@string.escape"] = { fg = c.fg }, -- For escape characters within a string.
+        -- ["@string.special"] = { fg = c.fg }, -- For strings with special meaning that don't fit into the above categories.
+        -- ["@character"] = { fg = c.fg }, -- For characters.
+        -- ["@character.special"] = { fg = c.fg }, -- For special characters.
+        -- ["@number"] = { fg = c.fg }, -- For all numbers
+        -- ["@number.float"] = { fg = c.fg }, -- For floats.
+        -- ["@boolean"] = { fg = c.fg, bg = c.none, style = cfg.boolean_style }, -- For booleans.
+        -- ["@function"] = { fg = c.bright_blue, style = cfg.function_style }, -- For function (calls and definitions).
+        -- ["@function.builtin"] = { fg = c.bright_blue, style = cfg.function_style }, -- For builtin functions: `table.insert` in Lua.
+        -- ["@function.macro"] = { fg = c.blue }, -- For macro defined functions (calls and definitions): each `macro_rules` in Rust.
+        -- ["@function.method"] = { fg = c.bright_blue, style = cfg.function_style }, -- For method calls and definitions.
+        -- ["@constructor"] = { fg = c.gray07 }, -- For constructor calls and definitions:  `= { }` in Lua, and Java constructors.
+        -- ["@keyword"] = { fg = c.blue, style = cfg.keyword_style }, -- For keywords that don't fall in previous categories.
+        -- ["@keyword.function"] = { fg = c.blue, style = cfg.function_style }, -- For keywords used to define a function.
+        -- ["@keyword.operator"] = { fg = c.gray06 }, -- For operators that are English words, e.g.`and`, `as`, `or`.
+        -- ["@keyword.return"] = { fg = c.blue, style = cfg.keyword_style }, -- For the `return` and `yield` keywords.
+        -- ["@keyword.conditional"] = { fg = c.fg, style = cfg.keyword_style }, -- For keywords related to conditionals.
+        -- ["@keyword.repeat"] = { fg = c.blue, style = cfg.keyword_style }, -- For keywords related to loops.
+        -- ["@keyword.import"] = { fg = c.blue, style = "italic" }, -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
+        -- ["@keyword.exception"] = { fg = c.blue }, -- For exception related keywords.
+        -- ["@operator"] = { fg = c.gray06 }, -- For any operator:  `+`, but also `->` and `*` in C.
+        -- ["@punctuation.delimiter"] = { fg = c.gray06 }, -- For delimiters ie: `.`
+        -- ["@punctuation.bracket"] = { fg = c.gray06 }, -- For brackets and parens.
+        -- ["@punctuation.special"] = { fg = c.fg }, -- For special punctuation that does not fall in the categories before.
+        -- ["@comment"] = { fg = c.gray06, bg = c.none, style = cfg.comment_style }, -- For comment blocks.
+        -- ["@comment.error"] = { fg = c.red }, -- For error-type comments (e.g., `ERROR`, `FIXME`, `DEPRECATED`)
+        -- ["@comment.warning"] = { fg = c.yellow }, -- For warning-type comments (e.g., `WARNING`, `TODO`)
+        -- ["@comment.note"] = { fg = c.blue }, -- For note-type comments (e.g., `NOTE`, `INFO`)
+        -- ["@comment.todo"] = { fg = c.cyan, style = "bold,italic" }, -- For todo comments.
+        -- ["@markup.strong"] = { fg = c.fg, style = "bold" }, -- For text to be represented in bold.
+        -- ["@markup.italic"] = { fg = c.fg, style = "italic" }, -- For text to be represented with emphasis.
+        -- ["@markup.underline"] = { fg = c.fg, bg = c.none, style = "underline" }, -- For text to be represented with an underline.
+        -- ["@markup.strikethrough"] = { style = "strikethrough" }, -- For strikethrough text.
+        -- ["@markup.heading"] = { fg = c.fg, bg = c.none, style = "bold" }, -- Text that is part of a title.
+        -- ["@markup.link"] = { fg = c.fg }, -- Any URL like a link or email.
+        -- ["@markup.link.url"] = { fg = c.fg, style = "underline" }, -- URLs
+        -- ["@markup.raw"] = { fg = c.fg }, -- Literal text.
+        -- ["@markup.math"] = { fg = c.blue }, -- For LaTeX-like math environments.
+        -- ["@markup.list"] = { fg = c.gray06 }, -- For list markers.
+        -- ["@markup.quote"] = { fg = c.gray06 }, -- For quotes
+        -- ["@type"] = { fg = c.fg }, -- For types.
+        -- ["@type.builtin"] = { fg = c.cyan }, -- For builtin types.
+        -- ["@type.definition"] = { fg = c.cyan }, -- For type definitions.
+        -- ["@attribute"] = { fg = c.fg }, -- (unstable) TODO: docs
+        -- ["@property"] = { fg = c.blue }, -- Same as `@field`.
+        -- ["@tag"] = { fg = c.blue }, -- Tags like html tag names.
+        -- ["@tag.attribute"] = { fg = c.bright_blue, style = "italic" }, -- For html tag attributes.
+        -- ["@tag.delimiter"] = { fg = c.gray06 }, -- Tag delimiter like `<` `>` `/`
+        
         -- highlight groups for the native LSP client
         LspReferenceText = { fg = c.none, bg = c.pink }, -- used for highlighting "text" references
         LspReferenceRead = { fg = c.none, bg = c.pink }, -- used for highlighting "read" references
@@ -274,7 +336,7 @@ local set_groups = function()
         -- Plugins highlight groups
         -- LspTrouble
         LspTroubleText = { fg = c.gray04 },
-        LspTroubleCount = { fg = c.pink, bg = c.gray03 },
+        LspTroubleCount = { fg = c.fg, bg = c.gray03 },
         LspTroubleNormal = { fg = c.fg, bg = c.bg },
         -- Diff
         diffAdded = { fg = c.bright_green },
@@ -284,16 +346,16 @@ local set_groups = function()
         diffNewFile = { fg = c.fg },
         diffFile = { fg = c.gray05 },
         diffLine = { fg = c.cyan },
-        diffIndexLine = { fg = c.pink },
+        diffIndexLine = { fg = c.fg },
         -- GitSigns
         GitSignsAdd = { fg = c.bright_green }, -- diff mode: Added line |diff.txt|
         GitSignsAddNr = { fg = c.bright_green }, -- diff mode: Added line |diff.txt|
-        GitSignsAddLn = { fg = c.bright_green }, -- diff mode: Added line |diff.txt|
+        GitSignsAddLn = { fg = c.bright_green }, -- diff mode:  Added line |diff.txt|
         GitSignsChange = { fg = c.bright_yellow }, -- diff mode: Changed line |diff.txt|
         GitSignsChangeNr = { fg = c.bright_yellow }, -- diff mode: Changed line |diff.txt|
         GitSignsChangeLn = { fg = c.bright_yellow }, -- diff mode: Changed line |diff.txt|
         GitSignsDelete = { fg = c.bright_red }, -- diff mode: Deleted line |diff.txt|
-        GitSignsDeleteNr = { fg = c.bright_red }, -- diff mode: Deleted line |diff.txt|
+        GitSignsDeleteNr = { fg = c.bright_red }, -- diff mode:  Deleted line |diff.txt|
         GitSignsDeleteLn = { fg = c.bright_red }, -- diff mode: Deleted line |diff.txt|
         -- Telescope
         TelescopeSelectionCaret = { fg = c.cyan , bg = c.gray02 },
@@ -306,9 +368,9 @@ local set_groups = function()
         -- NvimTree
         NvimTreeRootFolder = { fg = c.cyan, style = "italic" },
         NvimTreeNormal = { fg = c.fg, bg = cfg.transparent and c.none or c.bg },
-        NvimTreeImageFile = { fg = c.pink },
+        NvimTreeImageFile = { fg = c.fg },
         NvimTreeExecFile = { fg = c.green },
-        NvimTreeSpecialFile = { fg = c.pink },
+        NvimTreeSpecialFile = { fg = c.fg },
         NvimTreeFolderName = { fg = c.blue },
         NvimTreeOpenedFolderName = { fg = c.bright_blue },
         NvimTreeOpenedFile = { fg = c.bright_blue },
@@ -338,7 +400,7 @@ local set_groups = function()
         WhichKeyFloating = { bg = c.gray01 },
         WhichKeyFloat = { bg = c.gray01 },
         -- LspSaga
-        LspSagaFinderSelection = { fg = c.pink },
+        LspSagaFinderSelection = { fg = c.fg },
         LspSagaLspFinderBorder = { fg = c.gray05 },
         LspFloatWinNormal = { bg = c.bg },
         LspFloatWinBorder = { fg = c.gray05 },
@@ -359,7 +421,7 @@ local set_groups = function()
         LspSagaDocTruncateLine = { fg = c.gray05 },
         LspSagaCodeActionTitle = { fg = c.gray06 },
         LspSagaCodeActionTruncateLine = { fg = c.gray05 },
-        LspSagaCodeActionContent = { fg = c.pink },
+        LspSagaCodeActionContent = { fg = c.fg },
         LspSagaRenamePromptPrefix = { fg = c.green },
         LspSagaRenameBorder = { fg = c.gray05 },
         LspSagaHoverBorder = { fg = c.gray05 },
@@ -389,8 +451,8 @@ local set_groups = function()
         CmpItemKindVariable = { fg = c.blue },
         CmpItemKindInterface = { fg = c.blue },
         CmpItemKindText = { fg = c.blue },
-        CmpItemKindFunction = { fg = c.pink },
-        CmpItemKindMethod = { fg = c.pink },
+        CmpItemKindFunction = { fg = c.fg },
+        CmpItemKindMethod = { fg = c.fg },
         CmpItemKindKeyword = { fg = c.fg },
         CmpItemKindProperty = { fg = c.fg },
         CmpItemKindUnit = { fg = c.fg },
