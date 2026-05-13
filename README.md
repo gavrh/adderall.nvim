@@ -1,5 +1,5 @@
 # adderall
-The light theme optimized for focus and productivity.
+The custom theme optimized for focus and productivity.
 
 ## Installation
 
