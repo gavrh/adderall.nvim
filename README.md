@@ -1,5 +1,5 @@
 # adderall
-The custom theme optimized for focus and productivity.
+My custom theme optimized for focus and productivity.
 
 ## Installation
 
