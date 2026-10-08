@@ -215,7 +215,7 @@ local set_groups = function()
         TSInclude = { fg = c.blue, style = "italic" }, -- For includes:  `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
         TSKeyword = { fg = c.blue, style = cfg.keyword_style }, -- For keywords that don't fall in previous categories.
         TSKeywordFunction = { fg = c.blue, style = cfg.function_style }, -- For keywords used to define a fuction.
-        TSKeywordOperator = { fg = c.gray06 }, -- For operators that are English words, e.g.`and`, `as`, `or`.
+        TSKeywordOperator = { fg = c.blue, style = cfg.keyword_style }, -- For operators that are English words, e.g.`and`, `as`, `or`.
         TSKeywordReturn = { fg = c.blue, style = cfg.keyword_style }, -- For the `return` and `yield` keywords.
         TSLabel = { fg = c.cyan }, -- For labels:  `label:` in C and `:label: ` in Lua.
         TSMethod = { fg = c.bright_blue, style = cfg.function_style }, -- For method calls and definitions.
